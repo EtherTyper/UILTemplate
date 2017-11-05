@@ -7,21 +7,21 @@ public class Cairo {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner lineScanner = new Scanner(new File("cairo.dat"));
         char[][] pyramids = new char[12][60];
-        String reversedInput = "";
+        StringBuilder reversedInput = new StringBuilder();
         
         while (lineScanner.hasNext()) {
             String line = lineScanner.nextLine();
             
             if (line.equals("0 0")) {
-                reversedInput += "0 0";
+                reversedInput.append("0 0");
                 
                 break;
             }
             
-            reversedInput = line + "\n" + reversedInput;
+            reversedInput.insert(0, line + "\n");
         }
         
-        lineScanner = new Scanner(reversedInput);
+        lineScanner = new Scanner(reversedInput.toString());
         
         for (char[] row: pyramids)
             Arrays.fill(row, ' ');
